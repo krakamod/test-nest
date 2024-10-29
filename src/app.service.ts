@@ -6,7 +6,9 @@ import {
 
 @Injectable()
 export class AppService {
-  constructor(private integrationServiceFactory: IntegrationServiceFactory) {}
+  constructor(
+    private readonly integrationServiceFactory: IntegrationServiceFactory,
+  ) {}
 
   public getHello(): string {
     return 'Hello World!';

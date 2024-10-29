@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import { ApiService } from '../api/api.service';
 
 export enum IntegrationType {
@@ -82,8 +83,9 @@ class MockIntegration implements IIntegrationService {
   }
 }
 
+@Injectable()
 export class IntegrationServiceFactory {
-  constructor(private apiService: ApiService) {}
+  constructor(private readonly apiService: ApiService) {}
 
   public create(
     integrationType: IntegrationType | 'Mock',
