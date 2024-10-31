@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 
 type Property = {
   id: string;
@@ -7,9 +7,10 @@ type Property = {
 
 @Injectable()
 export class ApiService {
-  getProperties(source: string): Property[] {
-    console.log('ApiService');
-    console.log('Getting properties from:', source);
+  private readonly logger = new Logger(ApiService.name);
+
+  getProperties(source: string, portgolioId?: string): Property[] {
+    this.logger.log(`Portfolio ID: '${portgolioId}'`);
 
     return [
       {
